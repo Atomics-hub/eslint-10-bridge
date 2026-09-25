@@ -1,0 +1,91 @@
+{
+  "name": "eslint-10-bridge",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Run ESLint 10 on configs built for ESLint 9, including eslint-config-next and @babel/eslint-parser 7. Fixes \"scopeManager.addGlobals is not a function\".",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24"
+  },
+  "license": "MIT",
+  "author": "Tom Ryan",
+  "keywords": [
+    "eslint",
+    "eslint-10",
+    "eslint10",
+    "eslint-config-next",
+    "nextjs",
+    "next",
+    "babel",
+    "@babel/eslint-parser",
+    "addGlobals",
+    "flat-config",
+    "compat",
+    "upgrade"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:types": "tsc -p test/tsconfig.json",
+    "test:pack": "node scripts/test-pack.mjs",
+    "verify": "npm run build && npm test && npm run test:types && npm run test:pack",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run verify"
+  },
+  "dependencies": {
+    "@eslint/compat": "^2.1.1"
+  },
+  "peerDependencies": {
+    "eslint": "^9.0.0 || ^10.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/eslint-parser": "^7.28.0",
+    "@babel/preset-react": "^7.27.0",
+    "eslint": "^10.11.0",
+    "eslint-config-next": "^16.3.6",
+    "eslint9": "npm:eslint@^9.39.5",
+    "globals": "^17.0.0",
+    "next": "^16.3.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.6.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Atomics-hub/eslint-10-bridge.git"
+  },
+  "homepage": "https://github.com/Atomics-hub/eslint-10-bridge#readme",
+  "bugs": {
+    "url": "https://github.com/Atomics-hub/eslint-10-bridge/issues"
+  },
+  "overrides": {
+    "@babel/eslint-parser": {
+      "eslint": "$eslint"
+    }
+  }
+}
