@@ -45,7 +45,7 @@
   ],
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "node --test test/*.test.mjs",
+    "test": "node --test test/api.test.mjs test/differential.test.mjs test/premise.test.mjs",
     "test:types": "tsc -p test/tsconfig.json",
     "test:pack": "node scripts/test-pack.mjs",
     "verify": "npm run build && npm test && npm run test:types && npm run test:pack",
