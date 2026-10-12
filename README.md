@@ -3,6 +3,14 @@
 Run ESLint 10 on configs built for ESLint 9, including Next.js's `eslint-config-next` and
 `@babel/eslint-parser` 7.
 
+> **Next.js 16.4 fixes this itself.** `eslint-config-next` 16.4.0 (2026-10-06,
+> [vercel/next.js#99628](https://github.com/vercel/next.js/pull/99628)) adds its own `addGlobals`
+> support and lints under ESLint 10 without this package: checked with ESLint 10.12.0 on a JSX file
+> with a `/* global */` comment, where the `react`, `jsx-a11y` and `@next` rules all ran. On
+> `eslint-config-next` 16.4 or later, remove this package. It is still needed for `eslint-config-next`
+> 16.3 and earlier, and for `@babel/eslint-parser` 7 outside Next.js (`@babel/eslint-parser` 8
+> supports ESLint 10 but needs Babel 8).
+
 If ESLint 10 stops with either of these errors, this package fixes it:
 
 ```
