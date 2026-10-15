@@ -61,11 +61,15 @@ export default fixupConfig([
 ```
 
 npm also refuses to install that parser alongside ESLint 10 (`ERESOLVE`), because its peer range
-stops at ESLint 9. Add an override to `package.json` so the parser uses your ESLint:
+stops at ESLint 9. The same goes for `eslint-plugin-import` 2.32 and `eslint-plugin-jsx-a11y` 6.10,
+whose rules run under ESLint 10 through `fixupConfig` once they are installed. Add an override to
+`package.json` for each one you use, so it accepts your ESLint:
 
 ```json
 "overrides": {
-  "@babel/eslint-parser": { "eslint": "$eslint" }
+  "@babel/eslint-parser": { "eslint": "$eslint" },
+  "eslint-plugin-import": { "eslint": "$eslint" },
+  "eslint-plugin-jsx-a11y": { "eslint": "$eslint" }
 }
 ```
 
